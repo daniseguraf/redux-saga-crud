@@ -5,6 +5,9 @@ import {
   CREATE_USER_START,
   CREATE_USER_SUCCESS,
   CREATE_USER_ERROR,
+  DELETE_USER_START,
+  DELETE_USER_SUCCESS,
+  DELETE_USER_ERROR,
 } from './actionsTypes';
 
 const initialState = {
@@ -36,6 +39,21 @@ const usersReducer = (state = initialState, action) => {
     };
   }
   if (action.type === CREATE_USER_ERROR) {
+    return { ...state, loading: false, error: action.payload };
+  }
+
+  // Delete user
+  if (action.type === DELETE_USER_START) {
+    return { ...state, loading: true };
+  }
+  if (action.type === DELETE_USER_SUCCESS) {
+    return {
+      ...state,
+      loading: false,
+      users: state.users.filter((el) => el.id !== action.payload),
+    };
+  }
+  if (action.type === DELETE_USER_ERROR) {
     return { ...state, loading: false, error: action.payload };
   }
 

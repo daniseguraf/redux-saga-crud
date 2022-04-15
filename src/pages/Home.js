@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { loadUsersStart } from '../redux/actions';
+import { loadUsersStart, deleteUserStart } from '../redux/actions';
 
 import {
   MDBTable,
@@ -13,13 +13,15 @@ import {
 import { Link } from 'react-router-dom';
 
 const Home = () => {
-  const distpatch = useDispatch();
+  const dispatch = useDispatch();
   const { users } = useSelector((state) => state.data);
 
-  const handleDelete = () => {};
+  const handleDelete = (id) => {
+    dispatch(deleteUserStart(id));
+  };
 
   useEffect(() => {
-    distpatch(loadUsersStart());
+    dispatch(loadUsersStart());
   }, []);
 
   return (
