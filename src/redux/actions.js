@@ -4,15 +4,15 @@ import {
   LOAD_USERS_ERROR,
 } from './actionsTypes';
 
-const loadUsersStart = () => ({ action: LOAD_USERS_START });
+const loadUsersStart = () => ({ type: LOAD_USERS_START });
 
 const loadUsersSuccess = (users) => ({
-  action: LOAD_USERS_SUCCESS,
+  type: LOAD_USERS_SUCCESS,
   payload: users,
 });
 
 const loadUsersError = (error) => ({
-  action: LOAD_USERS_ERROR,
+  type: LOAD_USERS_ERROR,
   payload: error,
 });
 
