@@ -35,29 +35,31 @@ const Header = () => {
         </MDBNavbarToggler>
 
         <MDBCollapse show={showBasic} navbar>
-          <MDBNavbarNav className="me-auto mb-2 mb-lg-0">
+          <MDBNavbarNav
+            className="me-auto mb-2 mb-lg-0"
+            style={{
+              display: 'flex',
+              justifyContent: 'flex-start',
+              alignItems: 'center',
+              gap: '1rem',
+            }}
+          >
             <MDBNavbarItem>
-              <MDBNavbarLink className="nav-link">
-                <NavLink className="text-white" to="/">
-                  Home
-                </NavLink>
-              </MDBNavbarLink>
+              <NavLink className="text-white" to="/">
+                Home
+              </NavLink>
             </MDBNavbarItem>
 
             <MDBNavbarItem>
-              <MDBNavbarLink className="nav-link">
-                <NavLink className="text-white" to="/addUser">
-                  Add User
-                </NavLink>
-              </MDBNavbarLink>
+              <NavLink className="text-white" to="/addUser">
+                Add User
+              </NavLink>
             </MDBNavbarItem>
 
             <MDBNavbarItem>
-              <MDBNavbarLink className="nav-link">
-                <NavLink className="text-white" to="/about">
-                  About
-                </NavLink>
-              </MDBNavbarLink>
+              <NavLink className="text-white" to="/about">
+                About
+              </NavLink>
             </MDBNavbarItem>
           </MDBNavbarNav>
         </MDBCollapse>

@@ -8,7 +8,6 @@ import {
   MDBTableBody,
   MDBBtn,
   MDBIcon,
-  MDBTooltip,
   MDBSpinner,
 } from 'mdb-react-ui-kit';
 import { Link } from 'react-router-dom';
@@ -45,41 +44,41 @@ const Home = () => {
                 <td>{el.email}</td>
                 <td>{el.phone}</td>
                 <td>{el.address}</td>
-                <td>
+                <td
+                  style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    gap: '0.5rem',
+                  }}
+                >
                   <MDBBtn
-                    className="m-1"
                     tag="a"
                     color="none"
                     onClick={() => handleDelete(el.id)}
                   >
-                    <MDBTooltip title="Delete" tag="a">
-                      <MDBIcon
-                        fas
-                        icon="trash"
-                        style={{ color: '#dd4b39' }}
-                        size="lg"
-                      />
-                    </MDBTooltip>
-                  </MDBBtn>{' '}
+                    <MDBIcon
+                      fas
+                      icon="trash"
+                      style={{ color: '#dd4b39' }}
+                      size="lg"
+                    />
+                  </MDBBtn>
                   <Link to={`/editUser/${el.id}`}>
-                    <MDBTooltip title="Edit" tag="a">
-                      <MDBIcon
-                        fas
-                        icon="pen"
-                        style={{ color: '#55acee', marginBottom: '10px' }}
-                        size="lg"
-                      />
-                    </MDBTooltip>
-                  </Link>{' '}
+                    <MDBIcon
+                      fas
+                      icon="pen"
+                      style={{ color: '#55acee', marginBottom: '10px' }}
+                      size="lg"
+                    />
+                  </Link>
                   <Link to={`/userInfo/${el.id}`}>
-                    <MDBTooltip title="View" tag="a">
-                      <MDBIcon
-                        fas
-                        icon="eye"
-                        style={{ color: '#3b5998', marginBottom: '10px' }}
-                        size="lg"
-                      />
-                    </MDBTooltip>
+                    <MDBIcon
+                      fas
+                      icon="eye"
+                      style={{ color: '#3b5998', marginBottom: '10px' }}
+                      size="lg"
+                    />
                   </Link>
                 </td>
               </tr>

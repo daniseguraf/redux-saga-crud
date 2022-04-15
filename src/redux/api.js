@@ -1,7 +1,9 @@
 import axios from 'axios';
 
-const loadUsersApi = async () => {
+export const loadUsersApi = async () => {
   return await axios.get(`http://localhost:5000/users`);
 };
 
-export { loadUsersApi };
+export const createUserApi = async (user) => {
+  return await axios.post(`http://localhost:5000/users`, user);
+};

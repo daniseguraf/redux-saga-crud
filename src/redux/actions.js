@@ -2,18 +2,35 @@ import {
   LOAD_USERS_START,
   LOAD_USERS_SUCCESS,
   LOAD_USERS_ERROR,
+  CREATE_USER_START,
+  CREATE_USER_SUCCESS,
+  CREATE_USER_ERROR,
 } from './actionsTypes';
 
-const loadUsersStart = () => ({ type: LOAD_USERS_START });
+// Load Users
+export const loadUsersStart = () => ({ type: LOAD_USERS_START });
 
-const loadUsersSuccess = (users) => ({
+export const loadUsersSuccess = (users) => ({
   type: LOAD_USERS_SUCCESS,
   payload: users,
 });
 
-const loadUsersError = (error) => ({
+export const loadUsersError = (error) => ({
   type: LOAD_USERS_ERROR,
   payload: error,
 });
 
-export { loadUsersStart, loadUsersSuccess, loadUsersError };
+// Add User
+export const createUserStart = (user) => ({
+  type: CREATE_USER_START,
+  payload: user,
+});
+
+export const createUserSuccess = () => ({
+  type: CREATE_USER_SUCCESS,
+});
+
+export const createUserError = (error) => ({
+  type: CREATE_USER_ERROR,
+  payload: error,
+});
