@@ -15,25 +15,11 @@
       "id": 2
     },
     {
-      "name": "bb",
-      "email": "bb@b.b",
-      "phone": "bb",
-      "address": "bb",
+      "name": "",
+      "email": "",
+      "phone": "",
+      "address": "",
       "id": 3
-    },
-    {
-      "name": "cc",
-      "email": "cc@c.c",
-      "phone": "ccc",
-      "address": "ccc",
-      "id": 4
-    },
-    {
-      "name": "dd",
-      "email": "dd@d.d",
-      "phone": "ddd",
-      "address": "ddd",
-      "id": 5
     }
   ]
 }

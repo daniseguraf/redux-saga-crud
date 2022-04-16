@@ -8,6 +8,9 @@ import {
   DELETE_USER_START,
   DELETE_USER_SUCCESS,
   DELETE_USER_ERROR,
+  UPDATE_USER_START,
+  UPDATE_USER_SUCCESS,
+  UPDATE_USER_ERROR,
 } from './actionsTypes';
 
 // Load Users
@@ -40,7 +43,6 @@ export const createUserError = (error) => ({
 
 // Delete User
 export const deleteUserStart = (userId) => {
-  // console.log(userId);
   return {
     type: DELETE_USER_START,
     payload: userId,
@@ -54,5 +56,20 @@ export const deleteUserSuccess = (userId) => ({
 
 export const deleteUserError = (error) => ({
   type: DELETE_USER_ERROR,
+  payload: error,
+});
+
+// Update User
+export const updateUserStart = (updatedInfo) => ({
+  type: UPDATE_USER_START,
+  payload: updatedInfo,
+});
+
+export const updateUserSuccess = () => ({
+  type: UPDATE_USER_SUCCESS,
+});
+
+export const updateUserError = (error) => ({
+  type: UPDATE_USER_ERROR,
   payload: error,
 });

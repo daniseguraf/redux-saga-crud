@@ -51,14 +51,13 @@ function* onCreateUserStartAsync(action) {
 }
 
 // Delete user
-function* onDeleteUserStartAsync(action) {
-  console.log(action);
-
+function* onDeleteUserStartAsync(id) {
   try {
-    const response = yield call(deleteUserApi, action.payload);
+    const response = yield call(deleteUserApi, id);
 
     if (response.status === 200) {
-      yield put(deleteUserSuccess(response.data));
+      yield delay(500);
+      yield put(deleteUserSuccess(id));
     }
   } catch (error) {
     yield put(deleteUserError(error.response.data));
@@ -74,7 +73,10 @@ function* onCreateUser() {
 }
 
 function* onDeleteUser() {
-  yield take(DELETE_USER_START, onDeleteUserStartAsync);
+  while (true) {
+    const { payload: userId } = yield take(DELETE_USER_START);
+    yield call(onDeleteUserStartAsync, userId);
+  }
 }
 
 const userSagas = [fork(onLoadUsers), fork(onCreateUser), fork(onDeleteUser)];

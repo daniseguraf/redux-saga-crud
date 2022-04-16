@@ -11,6 +11,7 @@ import {
   MDBSpinner,
 } from 'mdb-react-ui-kit';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -18,6 +19,7 @@ const Home = () => {
 
   const handleDelete = (id) => {
     dispatch(deleteUserStart(id));
+    toast.success('User deleted');
   };
 
   useEffect(() => {

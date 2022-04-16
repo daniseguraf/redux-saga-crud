@@ -8,6 +8,9 @@ import {
   DELETE_USER_START,
   DELETE_USER_SUCCESS,
   DELETE_USER_ERROR,
+  UPDATE_USER_START,
+  UPDATE_USER_SUCCESS,
+  UPDATE_USER_ERROR,
 } from './actionsTypes';
 
 const initialState = {
@@ -54,6 +57,20 @@ const usersReducer = (state = initialState, action) => {
     };
   }
   if (action.type === DELETE_USER_ERROR) {
+    return { ...state, loading: false, error: action.payload };
+  }
+
+  // Update user
+  if (action.type === UPDATE_USER_START) {
+    return { ...state, loading: true };
+  }
+  if (action.type === UPDATE_USER_SUCCESS) {
+    return {
+      ...state,
+      loading: false,
+    };
+  }
+  if (action.type === UPDATE_USER_ERROR) {
     return { ...state, loading: false, error: action.payload };
   }
 
