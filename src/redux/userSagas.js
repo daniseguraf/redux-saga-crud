@@ -38,7 +38,7 @@ function* onLoadUsersRequest() {
 }
 
 // Create new user
-function* onCreateUserStartAsync(action) {
+function* onCreateUserRequest(action) {
   try {
     const response = yield call(createUserApi, action.payload);
 
@@ -70,7 +70,7 @@ function* onLoadUsers() {
 }
 
 function* onCreateUser() {
-  yield takeLatest(CREATE_USER_REQUEST, onCreateUserStartAsync);
+  yield takeLatest(CREATE_USER_REQUEST, onCreateUserRequest);
 }
 
 function* onDeleteUser() {

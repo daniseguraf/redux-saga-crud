@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { MDBInput, MDBBtn } from 'mdb-react-ui-kit';
 import { useNavigate, useParams } from 'react-router-dom';
-import { createUserStart } from './../redux/actions';
 import { toast } from 'react-toastify';
+
+import { createUserRequest } from './../redux/actions';
 
 const initialState = {
   name: '',
@@ -15,11 +16,11 @@ const initialState = {
 const AddEditUser = () => {
   const [user, setUser] = useState(initialState);
   const [editMode, setEditMode] = useState(false);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const { users } = useSelector((state) => state.data);
-
   const { id } = useParams();
 
   useEffect(() => {
@@ -37,10 +38,12 @@ const AddEditUser = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(createUserStart(user));
-    setUser(initialState);
-    toast.success('User added successfully');
-    setTimeout(() => navigate('/'), 500);
+    if (user.name && user.email && user.phone && user.address) {
+      dispatch(createUserRequest(user));
+      setUser(initialState);
+      toast.success('User added successfully');
+      setTimeout(() => navigate('/'), 500);
+    }
   };
 
   return (
