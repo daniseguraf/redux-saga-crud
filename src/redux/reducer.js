@@ -1,14 +1,14 @@
 import {
-  LOAD_USERS_START,
+  LOAD_USERS_REQUEST,
   LOAD_USERS_SUCCESS,
   LOAD_USERS_ERROR,
-  CREATE_USER_START,
+  CREATE_USER_REQUEST,
   CREATE_USER_SUCCESS,
   CREATE_USER_ERROR,
-  DELETE_USER_START,
+  DELETE_USER_REQUEST,
   DELETE_USER_SUCCESS,
   DELETE_USER_ERROR,
-  UPDATE_USER_START,
+  UPDATE_USER_REQUEST,
   UPDATE_USER_SUCCESS,
   UPDATE_USER_ERROR,
 } from './actionsTypes';
@@ -21,7 +21,7 @@ const initialState = {
 
 const usersReducer = (state = initialState, action) => {
   // Get users
-  if (action.type === LOAD_USERS_START) {
+  if (action.type === LOAD_USERS_REQUEST) {
     return { ...state, loading: true };
   }
   if (action.type === LOAD_USERS_SUCCESS) {
@@ -32,7 +32,7 @@ const usersReducer = (state = initialState, action) => {
   }
 
   // Add new user
-  if (action.type === CREATE_USER_START) {
+  if (action.type === CREATE_USER_REQUEST) {
     return { ...state, loading: true };
   }
   if (action.type === CREATE_USER_SUCCESS) {
@@ -46,7 +46,7 @@ const usersReducer = (state = initialState, action) => {
   }
 
   // Delete user
-  if (action.type === DELETE_USER_START) {
+  if (action.type === DELETE_USER_REQUEST) {
     return { ...state, loading: true };
   }
   if (action.type === DELETE_USER_SUCCESS) {
@@ -61,7 +61,7 @@ const usersReducer = (state = initialState, action) => {
   }
 
   // Update user
-  if (action.type === UPDATE_USER_START) {
+  if (action.type === UPDATE_USER_REQUEST) {
     return { ...state, loading: true };
   }
   if (action.type === UPDATE_USER_SUCCESS) {

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { loadUsersStart, deleteUserStart } from '../redux/actions';
+import { loadUsersRequest, deleteUserStart } from '../redux/actions';
 
 import {
   MDBTable,
@@ -8,7 +8,6 @@ import {
   MDBTableBody,
   MDBBtn,
   MDBIcon,
-  MDBSpinner,
 } from 'mdb-react-ui-kit';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
@@ -23,11 +22,11 @@ const Home = () => {
   };
 
   useEffect(() => {
-    dispatch(loadUsersStart());
-  }, []);
+    dispatch(loadUsersRequest());
+  }, [dispatch]);
 
   return (
-    <div className="container" style={{ marginTop: '150px' }}>
+    <div className="container" style={{ marginTop: '100px' }}>
       <MDBTable>
         <MDBTableHead dark>
           <tr>

@@ -9,9 +9,9 @@ import {
   call,
 } from 'redux-saga/effects';
 import {
-  LOAD_USERS_START,
-  CREATE_USER_START,
-  DELETE_USER_START,
+  LOAD_USERS_REQUEST,
+  CREATE_USER_REQUEST,
+  DELETE_USER_REQUEST,
 } from './actionsTypes';
 import {
   loadUsersSuccess,
@@ -24,7 +24,7 @@ import {
 import { loadUsersApi, createUserApi, deleteUserApi } from './api';
 
 // Get users
-function* onLoadUsersStartAsync() {
+function* onLoadUsersRequest() {
   try {
     const response = yield call(loadUsersApi);
 
@@ -64,17 +64,18 @@ function* onDeleteUserStartAsync(id) {
   }
 }
 
+// Listeners
 function* onLoadUsers() {
-  yield takeEvery(LOAD_USERS_START, onLoadUsersStartAsync);
+  yield takeEvery(LOAD_USERS_REQUEST, onLoadUsersRequest);
 }
 
 function* onCreateUser() {
-  yield takeLatest(CREATE_USER_START, onCreateUserStartAsync);
+  yield takeLatest(CREATE_USER_REQUEST, onCreateUserStartAsync);
 }
 
 function* onDeleteUser() {
   while (true) {
-    const { payload: userId } = yield take(DELETE_USER_START);
+    const { payload: userId } = yield take(DELETE_USER_REQUEST);
     yield call(onDeleteUserStartAsync, userId);
   }
 }

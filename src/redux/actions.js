@@ -1,20 +1,20 @@
 import {
-  LOAD_USERS_START,
+  LOAD_USERS_REQUEST,
   LOAD_USERS_SUCCESS,
   LOAD_USERS_ERROR,
-  CREATE_USER_START,
+  CREATE_USER_REQUEST,
   CREATE_USER_SUCCESS,
   CREATE_USER_ERROR,
-  DELETE_USER_START,
+  DELETE_USER_REQUEST,
   DELETE_USER_SUCCESS,
   DELETE_USER_ERROR,
-  UPDATE_USER_START,
+  UPDATE_USER_REQUEST,
   UPDATE_USER_SUCCESS,
   UPDATE_USER_ERROR,
 } from './actionsTypes';
 
-// Load Users
-export const loadUsersStart = () => ({ type: LOAD_USERS_START });
+// LOAD USERS
+export const loadUsersRequest = () => ({ type: LOAD_USERS_REQUEST });
 
 export const loadUsersSuccess = (users) => ({
   type: LOAD_USERS_SUCCESS,
@@ -26,9 +26,9 @@ export const loadUsersError = (error) => ({
   payload: error,
 });
 
-// Add User
-export const createUserStart = (user) => ({
-  type: CREATE_USER_START,
+// ADD USER
+export const createUserRequest = (user) => ({
+  type: CREATE_USER_REQUEST,
   payload: user,
 });
 
@@ -44,7 +44,7 @@ export const createUserError = (error) => ({
 // Delete User
 export const deleteUserStart = (userId) => {
   return {
-    type: DELETE_USER_START,
+    type: DELETE_USER_REQUEST,
     payload: userId,
   };
 };
@@ -61,7 +61,7 @@ export const deleteUserError = (error) => ({
 
 // Update User
 export const updateUserStart = (updatedInfo) => ({
-  type: UPDATE_USER_START,
+  type: UPDATE_USER_REQUEST,
   payload: updatedInfo,
 });
 

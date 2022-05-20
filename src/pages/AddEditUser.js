@@ -44,7 +44,7 @@ const AddEditUser = () => {
   };
 
   return (
-    <div className="container" style={{ marginTop: '150px' }}>
+    <div className="container" style={{ marginTop: '100px' }}>
       <h2>{editMode ? 'Update User Detail' : 'Create User'}</h2>
 
       <form onSubmit={handleSubmit}>
