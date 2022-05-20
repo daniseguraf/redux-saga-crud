@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { loadUsersRequest, deleteUserStart } from '../redux/actions';
+import { loadUsersRequest, deleteUserRequest } from '../redux/actions';
 
 import {
   MDBTable,
@@ -17,7 +17,7 @@ const Home = () => {
   const { users } = useSelector((state) => state.data);
 
   const handleDelete = (id) => {
-    dispatch(deleteUserStart(id));
+    dispatch(deleteUserRequest(id));
     toast.success('User deleted');
   };
 

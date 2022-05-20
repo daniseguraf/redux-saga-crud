@@ -13,20 +13,6 @@
       "phone": "aa",
       "address": "aa",
       "id": 2
-    },
-    {
-      "name": "",
-      "email": "",
-      "phone": "",
-      "address": "",
-      "id": 3
-    },
-    {
-      "name": "bbb",
-      "email": "b@b.com",
-      "phone": "1234",
-      "address": "bcbc",
-      "id": 4
     }
   ]
 }

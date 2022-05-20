@@ -20,7 +20,7 @@ const initialState = {
 };
 
 const usersReducer = (state = initialState, action) => {
-  // Get users
+  // LOAD USERS
   if (action.type === LOAD_USERS_REQUEST) {
     return { ...state, loading: true };
   }
@@ -31,7 +31,7 @@ const usersReducer = (state = initialState, action) => {
     return { ...state, loading: false, error: action.payload };
   }
 
-  // Add new user
+  // ADD USER
   if (action.type === CREATE_USER_REQUEST) {
     return { ...state, loading: true };
   }
@@ -45,7 +45,7 @@ const usersReducer = (state = initialState, action) => {
     return { ...state, loading: false, error: action.payload };
   }
 
-  // Delete user
+  // DELETE USER
   if (action.type === DELETE_USER_REQUEST) {
     return { ...state, loading: true };
   }

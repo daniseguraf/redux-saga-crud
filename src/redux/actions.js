@@ -41,8 +41,8 @@ export const createUserError = (error) => ({
   payload: error,
 });
 
-// Delete User
-export const deleteUserStart = (userId) => {
+// DELETE USER
+export const deleteUserRequest = (userId) => {
   return {
     type: DELETE_USER_REQUEST,
     payload: userId,

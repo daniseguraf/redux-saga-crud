@@ -51,7 +51,7 @@ function* onCreateUserRequest(action) {
 }
 
 // Delete user
-function* onDeleteUserStartAsync(id) {
+function* onDeleteUserRequest(id) {
   try {
     const response = yield call(deleteUserApi, id);
 
@@ -76,7 +76,7 @@ function* onCreateUser() {
 function* onDeleteUser() {
   while (true) {
     const { payload: userId } = yield take(DELETE_USER_REQUEST);
-    yield call(onDeleteUserStartAsync, userId);
+    yield call(onDeleteUserRequest, userId);
   }
 }
 
