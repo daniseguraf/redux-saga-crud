@@ -37,7 +37,7 @@ function* onLoadUsersRequest() {
   }
 }
 
-// Create new user
+// Create user
 function* onCreateUserRequest(action) {
   try {
     const response = yield call(createUserApi, action.payload);

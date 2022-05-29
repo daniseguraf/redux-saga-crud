@@ -20,35 +20,40 @@ const initialState = {
 };
 
 const usersReducer = (state = initialState, action) => {
-  // LOAD USERS
-  if (action.type === LOAD_USERS_REQUEST) {
+  // First Requests
+  if (
+    action.type === LOAD_USERS_REQUEST ||
+    action.type === CREATE_USER_REQUEST ||
+    action.type === DELETE_USER_REQUEST ||
+    action.type === UPDATE_USER_REQUEST
+  ) {
     return { ...state, loading: true };
   }
-  if (action.type === LOAD_USERS_SUCCESS) {
-    return { ...state, loading: false, users: action.payload };
-  }
-  if (action.type === LOAD_USERS_ERROR) {
+
+  // Errors
+  if (
+    action.type === LOAD_USERS_ERROR ||
+    action.type === CREATE_USER_ERROR ||
+    action.type === DELETE_USER_ERROR ||
+    action.type === UPDATE_USER_ERROR
+  ) {
     return { ...state, loading: false, error: action.payload };
   }
 
-  // ADD USER
-  if (action.type === CREATE_USER_REQUEST) {
-    return { ...state, loading: true };
+  // GET USERS
+  if (action.type === LOAD_USERS_SUCCESS) {
+    return { ...state, loading: false, users: action.payload };
   }
+
+  // CREATE USER
   if (action.type === CREATE_USER_SUCCESS) {
     return {
       ...state,
       loading: false,
     };
   }
-  if (action.type === CREATE_USER_ERROR) {
-    return { ...state, loading: false, error: action.payload };
-  }
 
   // DELETE USER
-  if (action.type === DELETE_USER_REQUEST) {
-    return { ...state, loading: true };
-  }
   if (action.type === DELETE_USER_SUCCESS) {
     return {
       ...state,
@@ -56,22 +61,13 @@ const usersReducer = (state = initialState, action) => {
       users: state.users.filter((el) => el.id !== action.payload),
     };
   }
-  if (action.type === DELETE_USER_ERROR) {
-    return { ...state, loading: false, error: action.payload };
-  }
 
-  // Update user
-  if (action.type === UPDATE_USER_REQUEST) {
-    return { ...state, loading: true };
-  }
+  // UPDATE USER
   if (action.type === UPDATE_USER_SUCCESS) {
     return {
       ...state,
       loading: false,
     };
-  }
-  if (action.type === UPDATE_USER_ERROR) {
-    return { ...state, loading: false, error: action.payload };
   }
 
   return state;

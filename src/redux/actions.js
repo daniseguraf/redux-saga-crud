@@ -26,7 +26,7 @@ export const loadUsersError = (error) => ({
   payload: error,
 });
 
-// ADD USER
+// CREATE USER
 export const createUserRequest = (user) => ({
   type: CREATE_USER_REQUEST,
   payload: user,
