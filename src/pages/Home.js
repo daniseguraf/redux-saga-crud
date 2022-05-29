@@ -14,7 +14,7 @@ import { toast } from 'react-toastify';
 
 const Home = () => {
   const dispatch = useDispatch();
-  const { users } = useSelector((state) => state.data);
+  const { users, error } = useSelector((state) => state.data);
 
   const handleDelete = (id) => {
     dispatch(deleteUserRequest(id));
@@ -24,6 +24,10 @@ const Home = () => {
   useEffect(() => {
     dispatch(loadUsersRequest());
   }, [dispatch]);
+
+  useEffect(() => {
+    error && toast.error(error);
+  }, [error]);
 
   return (
     <div className="container" style={{ marginTop: '100px' }}>

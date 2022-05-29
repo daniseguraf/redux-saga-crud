@@ -60,9 +60,9 @@ export const deleteUserError = (error) => ({
 });
 
 // Update User
-export const updateUserStart = (updatedInfo) => ({
+export const updateUserRequest = (userInfo) => ({
   type: UPDATE_USER_REQUEST,
-  payload: updatedInfo,
+  payload: userInfo,
 });
 
 export const updateUserSuccess = () => ({
