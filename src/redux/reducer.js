@@ -11,6 +11,9 @@ import {
   UPDATE_USER_REQUEST,
   UPDATE_USER_SUCCESS,
   UPDATE_USER_ERROR,
+  SEARCH_USER_REQUEST,
+  SEARCH_USER_SUCCESS,
+  SEARCH_USER_ERROR,
 } from './actionsTypes';
 
 const initialState = {
@@ -25,7 +28,8 @@ const usersReducer = (state = initialState, action) => {
     action.type === LOAD_USERS_REQUEST ||
     action.type === CREATE_USER_REQUEST ||
     action.type === DELETE_USER_REQUEST ||
-    action.type === UPDATE_USER_REQUEST
+    action.type === UPDATE_USER_REQUEST ||
+    action.type === SEARCH_USER_REQUEST
   ) {
     return { ...state, loading: true };
   }
@@ -35,7 +39,8 @@ const usersReducer = (state = initialState, action) => {
     action.type === LOAD_USERS_ERROR ||
     action.type === CREATE_USER_ERROR ||
     action.type === DELETE_USER_ERROR ||
-    action.type === UPDATE_USER_ERROR
+    action.type === UPDATE_USER_ERROR ||
+    action.type === SEARCH_USER_ERROR
   ) {
     return { ...state, loading: false, error: action.payload };
   }
@@ -68,6 +73,11 @@ const usersReducer = (state = initialState, action) => {
       ...state,
       loading: false,
     };
+  }
+
+  // SEARCH USER
+  if (action.type === SEARCH_USER_SUCCESS) {
+    return { ...state, loading: false, users: action.payload };
   }
 
   return state;

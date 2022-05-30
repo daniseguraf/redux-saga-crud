@@ -11,6 +11,9 @@ import {
   UPDATE_USER_REQUEST,
   UPDATE_USER_SUCCESS,
   UPDATE_USER_ERROR,
+  SEARCH_USER_REQUEST,
+  SEARCH_USER_SUCCESS,
+  SEARCH_USER_ERROR,
 } from './actionsTypes';
 
 // LOAD USERS
@@ -71,5 +74,21 @@ export const updateUserSuccess = () => ({
 
 export const updateUserError = (error) => ({
   type: UPDATE_USER_ERROR,
+  payload: error,
+});
+
+// SEARCH USER
+export const searchUserRequest = (query) => ({
+  type: SEARCH_USER_REQUEST,
+  payload: query,
+});
+
+export const searchUserSuccess = (users) => ({
+  type: SEARCH_USER_SUCCESS,
+  payload: users,
+});
+
+export const searchUserError = (error) => ({
+  type: SEARCH_USER_ERROR,
   payload: error,
 });
