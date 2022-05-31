@@ -14,6 +14,7 @@ import {
   DELETE_USER_REQUEST,
   UPDATE_USER_REQUEST,
   SEARCH_USER_REQUEST,
+  FILTER_USER_REQUEST,
 } from './actionsTypes';
 import {
   loadUsersSuccess,
@@ -26,6 +27,8 @@ import {
   updateUserError,
   searchUserSuccess,
   searchUserError,
+  filterUserSuccess,
+  filterUserError,
 } from './actions';
 import {
   loadUsersApi,
@@ -33,6 +36,7 @@ import {
   deleteUserApi,
   updateUserApi,
   searchUserApi,
+  filterUserApi,
 } from './api';
 
 // Get users
@@ -102,6 +106,19 @@ function* onSearchUserRequest({ payload: query }) {
   }
 }
 
+// Filter user
+function* onFilterUserRequest({ payload: value }) {
+  try {
+    const response = yield call(filterUserApi, value);
+
+    if (response.status === 200) {
+      yield put(filterUserSuccess(response.data));
+    }
+  } catch (error) {
+    yield put(filterUserError(error.response.data));
+  }
+}
+
 // Listeners
 function* onLoadUsers() {
   yield takeEvery(LOAD_USERS_REQUEST, onLoadUsersRequest);
@@ -126,12 +143,17 @@ function* onSearchUser() {
   yield takeLatest(SEARCH_USER_REQUEST, onSearchUserRequest);
 }
 
+function* onFilterUser() {
+  yield takeLatest(FILTER_USER_REQUEST, onFilterUserRequest);
+}
+
 const userSagas = [
   fork(onLoadUsers),
   fork(onCreateUser),
   fork(onDeleteUser),
   fork(onUpdateUser),
   fork(onSearchUser),
+  fork(onFilterUser),
 ];
 
 export default function* rootSaga() {

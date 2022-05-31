@@ -5,35 +5,48 @@
       "name": "John",
       "email": "john@mail.com",
       "phone": "93123434",
-      "address": "USA"
+      "address": "USA",
+      "status": "inactive"
     },
     {
       "name": "User 2",
       "email": "2@2.com",
       "phone": "2121",
       "address": "qwerty",
-      "id": 2
+      "id": 2,
+      "status": "active"
     },
     {
       "name": "tyjty",
       "email": "1@e.r",
       "phone": "ewe",
       "address": "wewe",
-      "id": 3
+      "id": 3,
+      "status": "inactive"
     },
     {
       "name": "eee",
       "email": "e@e.e",
       "phone": "eewef",
       "address": "wefwf",
-      "id": 4
+      "id": 4,
+      "status": "active"
     },
     {
       "name": "User 3",
       "email": "3@3.com",
       "phone": "31",
       "address": "31",
-      "id": 5
+      "id": 5,
+      "status": "active"
+    },
+    {
+      "name": "User 4",
+      "email": "4@4.com",
+      "phone": "41",
+      "address": "42",
+      "status": "active",
+      "id": 6
     }
   ]
 }

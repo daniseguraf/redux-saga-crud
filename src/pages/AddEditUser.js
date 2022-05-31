@@ -11,7 +11,13 @@ const initialState = {
   email: '',
   phone: '',
   address: '',
+  status: '',
 };
+
+const options = [
+  { label: 'Active', value: 'active' },
+  { label: 'Inactive', value: 'inactive' },
+];
 
 const AddEditUser = () => {
   const [user, setUser] = useState(initialState);
@@ -56,6 +62,10 @@ const AddEditUser = () => {
     }
   };
 
+  const handleSelectChange = (e) => {
+    setUser((prev) => ({ ...prev, status: e.target.value }));
+  };
+
   return (
     <div className="container" style={{ marginTop: '100px' }}>
       <h2>{editMode ? 'Update User Detail' : 'Create User'}</h2>
@@ -89,7 +99,20 @@ const AddEditUser = () => {
           value={user.address || ''}
           onChange={(e) => handleChange(e, 'address')}
         />
-
+        <select
+          style={{ width: '100%', borderRadius: '4px', height: '35px' }}
+          onChange={handleSelectChange}
+          value={user.status}
+        >
+          <option value="">Select Status</option>
+          {options.map((el) => (
+            <option key={el.value} value={el.value}>
+              {el.label}
+            </option>
+          ))}
+        </select>
+        <br />
+        <br />
         <MDBBtn className="mb-4" type="submit">
           {editMode ? 'Update' : 'Create'}
         </MDBBtn>

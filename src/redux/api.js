@@ -22,3 +22,7 @@ export const updateUserApi = async (userInfo) => {
 export const searchUserApi = async (query) => {
   return await axios.get(`http://localhost:5000/users?q=${query}`);
 };
+
+export const filterUserApi = async (value) => {
+  return await axios.get(`http://localhost:5000/users?status=${value}`);
+};

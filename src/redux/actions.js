@@ -14,6 +14,9 @@ import {
   SEARCH_USER_REQUEST,
   SEARCH_USER_SUCCESS,
   SEARCH_USER_ERROR,
+  FILTER_USER_REQUEST,
+  FILTER_USER_SUCCESS,
+  FILTER_USER_ERROR,
 } from './actionsTypes';
 
 // LOAD USERS
@@ -90,5 +93,21 @@ export const searchUserSuccess = (users) => ({
 
 export const searchUserError = (error) => ({
   type: SEARCH_USER_ERROR,
+  payload: error,
+});
+
+// FILTER USER
+export const filterUserRequest = (value) => ({
+  type: FILTER_USER_REQUEST,
+  payload: value,
+});
+
+export const filterUserSuccess = (users) => ({
+  type: FILTER_USER_SUCCESS,
+  payload: users,
+});
+
+export const filterUserError = (error) => ({
+  type: FILTER_USER_ERROR,
   payload: error,
 });
