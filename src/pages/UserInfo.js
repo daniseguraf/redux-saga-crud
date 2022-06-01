@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
 import { MDBBtn } from 'mdb-react-ui-kit';
-import { loadUsersRequest } from '../redux/actions';
+import { getUsersRequest } from '../redux/actions';
 
 const UserInfo = () => {
   const { id } = useParams();
@@ -15,7 +15,7 @@ const UserInfo = () => {
   const user = users.find((el) => el.id === +id);
 
   useEffect(() => {
-    dispatch(loadUsersRequest());
+    dispatch(getUsersRequest());
   }, [dispatch]);
 
   return (

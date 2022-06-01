@@ -1,113 +1,94 @@
-import {
-  LOAD_USERS_REQUEST,
-  LOAD_USERS_SUCCESS,
-  LOAD_USERS_ERROR,
-  CREATE_USER_REQUEST,
-  CREATE_USER_SUCCESS,
-  CREATE_USER_ERROR,
-  DELETE_USER_REQUEST,
-  DELETE_USER_SUCCESS,
-  DELETE_USER_ERROR,
-  UPDATE_USER_REQUEST,
-  UPDATE_USER_SUCCESS,
-  UPDATE_USER_ERROR,
-  SEARCH_USER_REQUEST,
-  SEARCH_USER_SUCCESS,
-  SEARCH_USER_ERROR,
-  FILTER_USER_REQUEST,
-  FILTER_USER_SUCCESS,
-  FILTER_USER_ERROR,
-} from './actionsTypes';
+import * as type from './actionsTypes';
 
-// LOAD USERS
-export const loadUsersRequest = () => ({ type: LOAD_USERS_REQUEST });
+// GET USERS
+export const getUsersRequest = () => ({ type: type.GET_USERS_REQUEST });
 
-export const loadUsersSuccess = (users) => ({
-  type: LOAD_USERS_SUCCESS,
+export const getUsersSuccess = (users) => ({
+  type: type.GET_USERS_SUCCESS,
   payload: users,
 });
 
-export const loadUsersError = (error) => ({
-  type: LOAD_USERS_ERROR,
+export const getUsersError = (error) => ({
+  type: type.GET_USERS_ERROR,
   payload: error,
 });
 
 // CREATE USER
 export const createUserRequest = (user) => ({
-  type: CREATE_USER_REQUEST,
+  type: type.CREATE_USER_REQUEST,
   payload: user,
 });
 
 export const createUserSuccess = () => ({
-  type: CREATE_USER_SUCCESS,
+  type: type.CREATE_USER_SUCCESS,
 });
 
 export const createUserError = (error) => ({
-  type: CREATE_USER_ERROR,
+  type: type.CREATE_USER_ERROR,
   payload: error,
 });
 
 // DELETE USER
 export const deleteUserRequest = (userId) => {
   return {
-    type: DELETE_USER_REQUEST,
+    type: type.DELETE_USER_REQUEST,
     payload: userId,
   };
 };
 
 export const deleteUserSuccess = (userId) => ({
-  type: DELETE_USER_SUCCESS,
+  type: type.DELETE_USER_SUCCESS,
   payload: userId,
 });
 
 export const deleteUserError = (error) => ({
-  type: DELETE_USER_ERROR,
+  type: type.DELETE_USER_ERROR,
   payload: error,
 });
 
 // Update User
 export const updateUserRequest = (userInfo) => ({
-  type: UPDATE_USER_REQUEST,
+  type: type.UPDATE_USER_REQUEST,
   payload: userInfo,
 });
 
 export const updateUserSuccess = () => ({
-  type: UPDATE_USER_SUCCESS,
+  type: type.UPDATE_USER_SUCCESS,
 });
 
 export const updateUserError = (error) => ({
-  type: UPDATE_USER_ERROR,
+  type: type.UPDATE_USER_ERROR,
   payload: error,
 });
 
 // SEARCH USER
 export const searchUserRequest = (query) => ({
-  type: SEARCH_USER_REQUEST,
+  type: type.SEARCH_USER_REQUEST,
   payload: query,
 });
 
 export const searchUserSuccess = (users) => ({
-  type: SEARCH_USER_SUCCESS,
+  type: type.SEARCH_USER_SUCCESS,
   payload: users,
 });
 
 export const searchUserError = (error) => ({
-  type: SEARCH_USER_ERROR,
+  type: type.SEARCH_USER_ERROR,
   payload: error,
 });
 
 // FILTER USER
 export const filterUserRequest = (value) => ({
-  type: FILTER_USER_REQUEST,
+  type: type.FILTER_USER_REQUEST,
   payload: value,
 });
 
 export const filterUserSuccess = (users) => ({
-  type: FILTER_USER_SUCCESS,
+  type: type.FILTER_USER_SUCCESS,
   payload: users,
 });
 
 export const filterUserError = (error) => ({
-  type: FILTER_USER_ERROR,
+  type: type.FILTER_USER_ERROR,
   payload: error,
 });

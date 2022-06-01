@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  loadUsersRequest,
+  getUsersRequest,
   deleteUserRequest,
   filterUserRequest,
 } from '../redux/actions';
@@ -20,11 +20,6 @@ import {
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-const options = [
-  { label: 'Active', value: 'active' },
-  { label: 'Inactive', value: 'inactive' },
-];
-
 const Home = () => {
   const dispatch = useDispatch();
   const { users, error } = useSelector((state) => state.data);
@@ -35,7 +30,7 @@ const Home = () => {
   };
 
   useEffect(() => {
-    dispatch(loadUsersRequest());
+    dispatch(getUsersRequest());
   }, [dispatch]);
 
   useEffect(() => {
@@ -128,7 +123,7 @@ const Home = () => {
             >
               Inactive
             </MDBBtn>
-            <MDBBtn onClick={() => dispatch(loadUsersRequest())}>Reset</MDBBtn>
+            <MDBBtn onClick={() => dispatch(getUsersRequest())}>Reset</MDBBtn>
           </MDBBtnGroup>
         </MDBCol>
       </MDBRow>

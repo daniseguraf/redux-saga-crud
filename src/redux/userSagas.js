@@ -9,7 +9,7 @@ import {
   call,
 } from 'redux-saga/effects';
 import {
-  LOAD_USERS_REQUEST,
+  GET_USERS_REQUEST,
   CREATE_USER_REQUEST,
   DELETE_USER_REQUEST,
   UPDATE_USER_REQUEST,
@@ -17,8 +17,8 @@ import {
   FILTER_USER_REQUEST,
 } from './actionsTypes';
 import {
-  loadUsersSuccess,
-  loadUsersError,
+  getUsersSuccess,
+  getUsersError,
   createUserSuccess,
   createUserError,
   deleteUserSuccess,
@@ -31,7 +31,7 @@ import {
   filterUserError,
 } from './actions';
 import {
-  loadUsersApi,
+  getUsersApi,
   createUserApi,
   deleteUserApi,
   updateUserApi,
@@ -40,16 +40,16 @@ import {
 } from './api';
 
 // Get users
-function* onLoadUsersRequest() {
+function* onGetUsersRequest() {
   try {
-    const response = yield call(loadUsersApi);
+    const response = yield call(getUsersApi);
 
     if (response.status === 200) {
       yield delay(500);
-      yield put(loadUsersSuccess(response.data));
+      yield put(getUsersSuccess(response.data));
     }
   } catch (error) {
-    yield put(loadUsersError(error.response.data));
+    yield put(getUsersError(error.response.data));
   }
 }
 
@@ -120,8 +120,8 @@ function* onFilterUserRequest({ payload: value }) {
 }
 
 // Listeners
-function* onLoadUsers() {
-  yield takeEvery(LOAD_USERS_REQUEST, onLoadUsersRequest);
+function* onGetUsers() {
+  yield takeEvery(GET_USERS_REQUEST, onGetUsersRequest);
 }
 
 function* onCreateUser() {
@@ -148,7 +148,7 @@ function* onFilterUser() {
 }
 
 const userSagas = [
-  fork(onLoadUsers),
+  fork(onGetUsers),
   fork(onCreateUser),
   fork(onDeleteUser),
   fork(onUpdateUser),
