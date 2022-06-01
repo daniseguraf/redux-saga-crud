@@ -1,9 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   getUsersRequest,
   deleteUserRequest,
   filterUserRequest,
+  sortUserRequest,
 } from '../redux/actions';
 
 import {
@@ -23,6 +24,9 @@ import { toast } from 'react-toastify';
 const Home = () => {
   const dispatch = useDispatch();
   const { users, error } = useSelector((state) => state.data);
+  const [sortValue, setSortValue] = useState('');
+
+  const sortOption = ['Name', 'Email', 'Phone', 'Address', 'Status'];
 
   const handleDelete = (id) => {
     dispatch(deleteUserRequest(id));
@@ -36,6 +40,16 @@ const Home = () => {
   useEffect(() => {
     error && toast.error(error);
   }, [error]);
+
+  useEffect(() => {
+    if (sortValue.length === 0) {
+      dispatch(getUsersRequest());
+      setSortValue('');
+      return;
+    }
+
+    dispatch(sortUserRequest(sortValue));
+  }, [sortValue, dispatch]);
 
   return (
     <MDBContainer>
@@ -107,6 +121,18 @@ const Home = () => {
       <MDBRow>
         <MDBCol size="8">
           <h5>Sort By:</h5>
+          <select
+            style={{ width: '50%', borderRadius: '2px', height: '35px' }}
+            value={sortValue}
+            onChange={(e) => setSortValue(e.target.value)}
+          >
+            <option value="">Select value</option>
+            {sortOption.map((el, index) => (
+              <option key={index} value={el.toLowerCase()}>
+                {el}
+              </option>
+            ))}
+          </select>
         </MDBCol>
         <MDBCol size="4">
           <h5>Filter By Status:</h5>

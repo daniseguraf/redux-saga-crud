@@ -8,14 +8,7 @@ import {
   fork,
   call,
 } from 'redux-saga/effects';
-import {
-  GET_USERS_REQUEST,
-  CREATE_USER_REQUEST,
-  DELETE_USER_REQUEST,
-  UPDATE_USER_REQUEST,
-  SEARCH_USER_REQUEST,
-  FILTER_USER_REQUEST,
-} from './actionsTypes';
+import * as types from './actionsTypes';
 import {
   getUsersSuccess,
   getUsersError,
@@ -29,6 +22,8 @@ import {
   searchUserError,
   filterUserSuccess,
   filterUserError,
+  sortUserSuccess,
+  sortUserError,
 } from './actions';
 import {
   getUsersApi,
@@ -37,6 +32,7 @@ import {
   updateUserApi,
   searchUserApi,
   filterUserApi,
+  sortUserApi,
 } from './api';
 
 // Get users
@@ -119,32 +115,49 @@ function* onFilterUserRequest({ payload: value }) {
   }
 }
 
+// Sort user
+function* onSortUserRequest({ payload: value }) {
+  try {
+    const response = yield call(sortUserApi, value);
+
+    if (response.status === 200) {
+      yield put(sortUserSuccess(response.data));
+    }
+  } catch (error) {
+    yield put(sortUserError(error.response.data));
+  }
+}
+
 // Listeners
 function* onGetUsers() {
-  yield takeEvery(GET_USERS_REQUEST, onGetUsersRequest);
+  yield takeEvery(types.GET_USERS_REQUEST, onGetUsersRequest);
 }
 
 function* onCreateUser() {
-  yield takeLatest(CREATE_USER_REQUEST, onCreateUserRequest);
+  yield takeLatest(types.CREATE_USER_REQUEST, onCreateUserRequest);
 }
 
 function* onDeleteUser() {
   while (true) {
-    const { payload: userId } = yield take(DELETE_USER_REQUEST);
+    const { payload: userId } = yield take(types.DELETE_USER_REQUEST);
     yield call(onDeleteUserRequest, userId);
   }
 }
 
 function* onUpdateUser() {
-  yield takeLatest(UPDATE_USER_REQUEST, onUpdateUserRequest);
+  yield takeLatest(types.UPDATE_USER_REQUEST, onUpdateUserRequest);
 }
 
 function* onSearchUser() {
-  yield takeLatest(SEARCH_USER_REQUEST, onSearchUserRequest);
+  yield takeLatest(types.SEARCH_USER_REQUEST, onSearchUserRequest);
 }
 
 function* onFilterUser() {
-  yield takeLatest(FILTER_USER_REQUEST, onFilterUserRequest);
+  yield takeLatest(types.FILTER_USER_REQUEST, onFilterUserRequest);
+}
+
+function* onSortUser() {
+  yield takeLatest(types.SORT_USER_REQUEST, onSortUserRequest);
 }
 
 const userSagas = [
@@ -154,6 +167,7 @@ const userSagas = [
   fork(onUpdateUser),
   fork(onSearchUser),
   fork(onFilterUser),
+  fork(onSortUser),
 ];
 
 export default function* rootSaga() {

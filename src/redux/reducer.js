@@ -1,4 +1,4 @@
-import * as type from './actionsTypes';
+import * as types from './actionsTypes';
 
 const initialState = {
   users: [],
@@ -9,35 +9,43 @@ const initialState = {
 const usersReducer = (state = initialState, action) => {
   // First Requests
   if (
-    action.type === type.GET_USERS_REQUEST ||
-    action.type === type.CREATE_USER_REQUEST ||
-    action.type === type.DELETE_USER_REQUEST ||
-    action.type === type.UPDATE_USER_REQUEST ||
-    action.type === type.SEARCH_USER_REQUEST ||
-    action.type === type.FILTER_USER_REQUEST
+    action.type === types.GET_USERS_REQUEST ||
+    action.type === types.CREATE_USER_REQUEST ||
+    action.type === types.DELETE_USER_REQUEST ||
+    action.type === types.UPDATE_USER_REQUEST ||
+    action.type === types.SEARCH_USER_REQUEST ||
+    action.type === types.FILTER_USER_REQUEST ||
+    action.type === types.SORT_USER_REQUEST
   ) {
     return { ...state, loading: true };
   }
 
   // Errors
   if (
-    action.type === type.GET_USERS_ERROR ||
-    action.type === type.CREATE_USER_ERROR ||
-    action.type === type.DELETE_USER_ERROR ||
-    action.type === type.UPDATE_USER_ERROR ||
-    action.type === type.SEARCH_USER_ERROR ||
-    action.type === type.FILTER_USER_ERROR
+    action.type === types.GET_USERS_ERROR ||
+    action.type === types.CREATE_USER_ERROR ||
+    action.type === types.DELETE_USER_ERROR ||
+    action.type === types.UPDATE_USER_ERROR ||
+    action.type === types.SEARCH_USER_ERROR ||
+    action.type === types.FILTER_USER_ERROR ||
+    action.type === types.SORT_USER_ERROR
   ) {
     return { ...state, loading: false, error: action.payload };
   }
 
-  // GET USERS
-  if (action.type === type.GET_USERS_SUCCESS) {
+  // Success
+  // GET USERS, SEARCH USER, FILTER USER, SORT USER
+  if (
+    action.type === types.GET_USERS_SUCCESS ||
+    action.type === types.SEARCH_USER_SUCCESS ||
+    action.type === types.FILTER_USER_SUCCESS ||
+    action.type === types.SORT_USER_SUCCESS
+  ) {
     return { ...state, loading: false, users: action.payload };
   }
 
   // CREATE USER
-  if (action.type === type.CREATE_USER_SUCCESS) {
+  if (action.type === types.CREATE_USER_SUCCESS) {
     return {
       ...state,
       loading: false,
@@ -45,7 +53,7 @@ const usersReducer = (state = initialState, action) => {
   }
 
   // DELETE USER
-  if (action.type === type.DELETE_USER_SUCCESS) {
+  if (action.type === types.DELETE_USER_SUCCESS) {
     return {
       ...state,
       loading: false,
@@ -54,21 +62,11 @@ const usersReducer = (state = initialState, action) => {
   }
 
   // UPDATE USER
-  if (action.type === type.UPDATE_USER_SUCCESS) {
+  if (action.type === types.UPDATE_USER_SUCCESS) {
     return {
       ...state,
       loading: false,
     };
-  }
-
-  // SEARCH USER
-  if (action.type === type.SEARCH_USER_SUCCESS) {
-    return { ...state, loading: false, users: action.payload };
-  }
-
-  // FILTER USER
-  if (action.type === type.FILTER_USER_SUCCESS) {
-    return { ...state, loading: false, users: action.payload };
   }
 
   return state;
