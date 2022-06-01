@@ -4,6 +4,9 @@ const initialState = {
   users: [],
   loading: false,
   error: null,
+  pageLimit: 4,
+  currentPage: 0,
+  paginationMode: true,
 };
 
 const usersReducer = (state = initialState, action) => {
@@ -34,14 +37,28 @@ const usersReducer = (state = initialState, action) => {
   }
 
   // Success
-  // GET USERS, SEARCH USER, FILTER USER, SORT USER
+  // SEARCH USER, FILTER USER, SORT USER
   if (
-    action.type === types.GET_USERS_SUCCESS ||
     action.type === types.SEARCH_USER_SUCCESS ||
     action.type === types.FILTER_USER_SUCCESS ||
     action.type === types.SORT_USER_SUCCESS
   ) {
-    return { ...state, loading: false, users: action.payload };
+    return {
+      ...state,
+      loading: false,
+      users: action.payload,
+      paginationMode: false,
+    };
+  }
+
+  // GET USERS
+  if (action.type === types.GET_USERS_SUCCESS) {
+    return {
+      ...state,
+      loading: false,
+      users: action.payload.users,
+      currentPage: state.currentPage + action.payload.currentPage,
+    };
   }
 
   // CREATE USER

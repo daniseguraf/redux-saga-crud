@@ -36,16 +36,21 @@ import {
 } from './api';
 
 // Get users
-function* onGetUsersRequest() {
+function* onGetUsersRequest(action) {
   try {
-    const response = yield call(getUsersApi);
+    const response = yield call(getUsersApi, action.payload);
 
     if (response.status === 200) {
       yield delay(500);
-      yield put(getUsersSuccess(response.data));
+      yield put(
+        getUsersSuccess({
+          users: response.data,
+          currentPage: action.payload.currentPage,
+        })
+      );
     }
   } catch (error) {
-    yield put(getUsersError(error.response.data));
+    yield put(getUsersError(error?.response?.data));
   }
 }
 

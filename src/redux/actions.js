@@ -1,7 +1,10 @@
 import * as types from './actionsTypes';
 
 // GET USERS
-export const getUsersRequest = () => ({ type: types.GET_USERS_REQUEST });
+export const getUsersRequest = (pageInfo) => ({
+  type: types.GET_USERS_REQUEST,
+  payload: pageInfo,
+});
 
 export const getUsersSuccess = (users) => ({
   type: types.GET_USERS_SUCCESS,

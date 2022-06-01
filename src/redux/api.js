@@ -1,7 +1,9 @@
 import axios from 'axios';
 
-export const getUsersApi = async () => {
-  return await axios.get(`http://localhost:5000/users`);
+export const getUsersApi = async ({ start, end }) => {
+  return await axios.get(
+    `http://localhost:5000/users?_start=${start}&_end=${end}`
+  );
 };
 
 export const createUserApi = async (user) => {

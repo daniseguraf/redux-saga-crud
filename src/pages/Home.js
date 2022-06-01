@@ -23,7 +23,9 @@ import { toast } from 'react-toastify';
 
 const Home = () => {
   const dispatch = useDispatch();
-  const { users, error } = useSelector((state) => state.data);
+  const { users, error, pageLimit, currentPage, paginationMode } = useSelector(
+    (state) => state.data
+  );
   const [sortValue, setSortValue] = useState('');
 
   const sortOption = ['Name', 'Email', 'Phone', 'Address', 'Status'];
@@ -34,7 +36,7 @@ const Home = () => {
   };
 
   useEffect(() => {
-    dispatch(getUsersRequest());
+    dispatch(getUsersRequest({ start: 0, end: 4, currentPage: 0 }));
   }, [dispatch]);
 
   useEffect(() => {
