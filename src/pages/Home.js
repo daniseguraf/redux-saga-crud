@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  getUsersRequest,
+  // getUsersRequest,
   deleteUserRequest,
   filterUserRequest,
   sortUserRequest,
 } from '../redux/actions';
+import { getUsersRequest } from './../redux/features/users/usersSlice';
 
 import {
   MDBTable,
@@ -36,7 +37,8 @@ const Home = () => {
   };
 
   useEffect(() => {
-    dispatch(getUsersRequest({ start: 0, end: 4, currentPage: 0 }));
+    // dispatch(getUsersRequest({ start: 0, end: 4, currentPage: 0 }));
+    dispatch(getUsersRequest());
   }, [dispatch]);
 
   useEffect(() => {

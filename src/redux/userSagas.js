@@ -3,15 +3,14 @@ import {
   takeEvery,
   takeLatest,
   put,
-  all,
   delay,
   fork,
   call,
 } from 'redux-saga/effects';
 import * as types from './actionsTypes';
 import {
-  getUsersSuccess,
-  getUsersError,
+  // getUsersSuccess,
+  // getUsersError,
   createUserSuccess,
   createUserError,
   deleteUserSuccess,
@@ -35,17 +34,23 @@ import {
   sortUserApi,
 } from './api';
 
+import {
+  getUsersRequest,
+  getUsersSuccess,
+  getUsersError,
+} from './features/users/usersSlice';
+
 // Get users
-function* onGetUsersRequest(action) {
+function* onGetUsersRequest() {
   try {
-    const response = yield call(getUsersApi, action.payload);
+    const response = yield call(getUsersApi);
 
     if (response.status === 200) {
-      yield delay(500);
+      yield delay(250);
       yield put(
         getUsersSuccess({
           users: response.data,
-          currentPage: action.payload.currentPage,
+          // currentPage: action.payload.currentPage,
         })
       );
     }
@@ -135,7 +140,8 @@ function* onSortUserRequest({ payload: value }) {
 
 // Listeners
 function* onGetUsers() {
-  yield takeEvery(types.GET_USERS_REQUEST, onGetUsersRequest);
+  console.log('onGetUsers:', getUsersRequest.type);
+  yield takeEvery(getUsersRequest.type, onGetUsersRequest);
 }
 
 function* onCreateUser() {
@@ -165,7 +171,7 @@ function* onSortUser() {
   yield takeLatest(types.SORT_USER_REQUEST, onSortUserRequest);
 }
 
-const userSagas = [
+export const userSagas = [
   fork(onGetUsers),
   fork(onCreateUser),
   fork(onDeleteUser),
@@ -174,7 +180,3 @@ const userSagas = [
   fork(onFilterUser),
   fork(onSortUser),
 ];
-
-export default function* rootSaga() {
-  yield all([...userSagas]);
-}
