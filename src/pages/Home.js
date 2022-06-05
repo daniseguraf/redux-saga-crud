@@ -24,7 +24,7 @@ import { toast } from 'react-toastify';
 const Home = () => {
   const dispatch = useDispatch();
   const { users, error, pageLimit, currentPage, paginationMode } = useSelector(
-    (state) => state.data
+    (state) => state.users
   );
   const [sortValue, setSortValue] = useState('');
 

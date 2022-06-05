@@ -26,7 +26,7 @@ const AddEditUser = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { users } = useSelector((state) => state.data);
+  const { users } = useSelector((state) => state.users);
   const { id } = useParams();
 
   useEffect(() => {

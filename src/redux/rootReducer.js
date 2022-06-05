@@ -1,6 +1,6 @@
-import { combineReducers } from 'redux';
+import { combineReducers } from '@reduxjs/toolkit';
 import usersReducer from './reducer';
 
-const rootReducer = combineReducers({ data: usersReducer });
+const rootReducer = combineReducers({ users: usersReducer });
 
 export default rootReducer;

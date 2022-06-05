@@ -9,7 +9,7 @@ const UserInfo = () => {
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
-  const { users } = useSelector((state) => state.data);
+  const { users } = useSelector((state) => state.users);
   console.log(users);
 
   const user = users.find((el) => el.id === +id);
