@@ -4,15 +4,13 @@ const initialState = {
   users: [],
   loading: false,
   error: null,
-  // pageLimit: 4,
-  // currentPage: 0,
-  // paginationMode: true,
 };
 
 const usersSlice = createSlice({
   name: 'users',
   initialState,
   reducers: {
+    // GET USERS
     getUsersRequest: (state) => {
       state.loading = true;
     },
@@ -25,7 +23,18 @@ const usersSlice = createSlice({
       state.error = action.payload;
     },
 
-    createUser: () => {},
+    // CREATE USER
+    createUserRequest: (state) => {
+      state.loading = true;
+    },
+    createUserSuccess: (state) => {
+      state.loading = false;
+    },
+    createUserError: (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
+    },
+
     deleteUser: () => {},
     updateUser: () => {},
   },
@@ -37,6 +46,9 @@ export const {
   getUsersRequest,
   getUsersSuccess,
   getUsersError,
+  createUserRequest,
+  createUserSuccess,
+  createUserError,
   createUser,
   deleteUser,
   updateUser,

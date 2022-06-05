@@ -11,8 +11,8 @@ import * as types from './actionsTypes';
 import {
   // getUsersSuccess,
   // getUsersError,
-  createUserSuccess,
-  createUserError,
+  // createUserSuccess,
+  // createUserError,
   deleteUserSuccess,
   deleteUserError,
   updateUserSuccess,
@@ -38,6 +38,9 @@ import {
   getUsersRequest,
   getUsersSuccess,
   getUsersError,
+  createUserRequest,
+  createUserSuccess,
+  createUserError,
 } from './features/users/usersSlice';
 
 // Get users
@@ -145,7 +148,7 @@ function* onGetUsers() {
 }
 
 function* onCreateUser() {
-  yield takeLatest(types.CREATE_USER_REQUEST, onCreateUserRequest);
+  yield takeLatest(createUserRequest.type, onCreateUserRequest);
 }
 
 function* onDeleteUser() {

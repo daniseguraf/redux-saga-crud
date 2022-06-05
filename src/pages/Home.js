@@ -45,15 +45,15 @@ const Home = () => {
     error && toast.error(error);
   }, [error]);
 
-  useEffect(() => {
-    if (sortValue.length === 0) {
-      dispatch(getUsersRequest());
-      setSortValue('');
-      return;
-    }
+  // useEffect(() => {
+  //   if (sortValue.length === 0) {
+  //     dispatch(getUsersRequest());
+  //     setSortValue('');
+  //     return;
+  //   }
 
-    dispatch(sortUserRequest(sortValue));
-  }, [sortValue, dispatch]);
+  //   dispatch(sortUserRequest(sortValue));
+  // }, [sortValue, dispatch]);
 
   return (
     <MDBContainer>

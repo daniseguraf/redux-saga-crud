@@ -4,7 +4,10 @@ import { MDBInput, MDBBtn } from 'mdb-react-ui-kit';
 import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-import { createUserRequest, updateUserRequest } from './../redux/actions';
+import {
+  createUserRequest,
+  // updateUserRequest,
+} from './../redux/features/users/usersSlice';
 
 const initialState = {
   name: '',
@@ -49,7 +52,7 @@ const AddEditUser = () => {
 
     if (user.name && user.email && user.phone && user.address) {
       if (editMode) {
-        dispatch(updateUserRequest(user));
+        // dispatch(updateUserRequest(user));
         setUser(initialState);
         setTimeout(() => navigate('/'), 500);
         toast.success('User updated successfully');

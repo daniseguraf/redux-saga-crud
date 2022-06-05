@@ -47,6 +47,22 @@
       "address": "42",
       "status": "active",
       "id": 6
+    },
+    {
+      "name": "Peter",
+      "email": "peter@mail.com",
+      "phone": "345",
+      "address": "543",
+      "status": "active",
+      "id": 7
+    },
+    {
+      "name": "Juan",
+      "email": "juan@mail.com",
+      "phone": "23",
+      "address": "32",
+      "status": "active",
+      "id": 8
     }
   ]
 }
