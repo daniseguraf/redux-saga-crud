@@ -25,44 +25,12 @@
       "status": "inactive"
     },
     {
-      "name": "Zara",
-      "email": "e@e.e",
-      "phone": "eewef",
-      "address": "wefwf",
+      "name": "Zara2",
+      "email": "e2@e2.e",
+      "phone": "2eewef",
+      "address": "2wefwf",
       "id": 4,
-      "status": "active"
-    },
-    {
-      "name": "Albert",
-      "email": "3@3.com",
-      "phone": "31",
-      "address": "31",
-      "id": 5,
-      "status": "active"
-    },
-    {
-      "name": "Camile",
-      "email": "4@4.com",
-      "phone": "41",
-      "address": "42",
-      "status": "active",
-      "id": 6
-    },
-    {
-      "name": "Peter",
-      "email": "peter@mail.com",
-      "phone": "345",
-      "address": "543",
-      "status": "active",
-      "id": 7
-    },
-    {
-      "name": "Juan",
-      "email": "juan@mail.com",
-      "phone": "23",
-      "address": "32",
-      "status": "active",
-      "id": 8
+      "status": "inactive"
     }
   ]
 }

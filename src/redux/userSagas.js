@@ -8,22 +8,7 @@ import {
   call,
 } from 'redux-saga/effects';
 import * as types from './actionsTypes';
-import {
-  // getUsersSuccess,
-  // getUsersError,
-  // createUserSuccess,
-  // createUserError,
-  deleteUserSuccess,
-  deleteUserError,
-  updateUserSuccess,
-  updateUserError,
-  searchUserSuccess,
-  searchUserError,
-  filterUserSuccess,
-  filterUserError,
-  sortUserSuccess,
-  sortUserError,
-} from './actions';
+
 import {
   getUsersApi,
   createUserApi,
@@ -41,6 +26,21 @@ import {
   createUserRequest,
   createUserSuccess,
   createUserError,
+  deleteUserRequest,
+  deleteUserSuccess,
+  deleteUserError,
+  updateUserRequest,
+  updateUserSuccess,
+  updateUserError,
+  searchUserRequest,
+  searchUserSuccess,
+  searchUserError,
+  filterUserRequest,
+  filterUserSuccess,
+  filterUserError,
+  sortUserRequest,
+  sortUserSuccess,
+  sortUserError,
 } from './features/users/usersSlice';
 
 // Get users
@@ -153,25 +153,25 @@ function* onCreateUser() {
 
 function* onDeleteUser() {
   while (true) {
-    const { payload: userId } = yield take(types.DELETE_USER_REQUEST);
+    const { payload: userId } = yield take(deleteUserRequest.type);
     yield call(onDeleteUserRequest, userId);
   }
 }
 
 function* onUpdateUser() {
-  yield takeLatest(types.UPDATE_USER_REQUEST, onUpdateUserRequest);
+  yield takeLatest(updateUserRequest.type, onUpdateUserRequest);
 }
 
 function* onSearchUser() {
-  yield takeLatest(types.SEARCH_USER_REQUEST, onSearchUserRequest);
+  yield takeLatest(searchUserRequest.type, onSearchUserRequest);
 }
 
 function* onFilterUser() {
-  yield takeLatest(types.FILTER_USER_REQUEST, onFilterUserRequest);
+  yield takeLatest(filterUserRequest.type, onFilterUserRequest);
 }
 
 function* onSortUser() {
-  yield takeLatest(types.SORT_USER_REQUEST, onSortUserRequest);
+  yield takeLatest(sortUserRequest.type, onSortUserRequest);
 }
 
 export const userSagas = [

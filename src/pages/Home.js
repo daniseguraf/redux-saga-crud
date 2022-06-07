@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  // getUsersRequest,
+  getUsersRequest,
   deleteUserRequest,
   filterUserRequest,
   sortUserRequest,
-} from '../redux/actions';
-import { getUsersRequest } from './../redux/features/users/usersSlice';
+} from './../redux/features/users/usersSlice';
 
 import {
   MDBTable,

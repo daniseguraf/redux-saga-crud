@@ -12,7 +12,7 @@ import {
 } from 'mdb-react-ui-kit';
 import { NavLink } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { searchUserRequest } from '../redux/actions';
+import { searchUserRequest } from '../redux/features/users/usersSlice';
 
 const Header = () => {
   const [showBasic, setShowBasic] = useState(false);
@@ -23,7 +23,7 @@ const Header = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(searchUserRequest(searchTerm));
-    searchTerm('');
+    setSearchTerm('');
   };
   return (
     <MDBNavbar expand="lg" dark bgColor="primary">
